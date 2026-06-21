@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足球竞彩 · 赛事信息与数据参考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f4f6fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2f 0%, #14253e 60%, #1e3452 100%);
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            color: #e8edf5;
+            border-bottom: 3px solid #f9a826;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto;
+            opacity: 0.85;
+            font-weight: 350;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: rgba(249, 168, 38, 0.18);
+            border: 1px solid #f9a826;
+            padding: 0.3rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #fad58c;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 3rem;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            color: #2d3a4f;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid #f9a826;
+            padding-left: 1.2rem;
+            background: #ffffffd9;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        /* 卡片网格 —— 信息卡片式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 8px 24px -8px rgba(0, 20, 40, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #eef2f7;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -12px rgba(0, 20, 40, 0.15);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #0b1a2f;
+            border-bottom: 2px solid #f9a826;
+            display: inline-block;
+            padding-bottom: 0.2rem;
+        }
+
+        .card p, .card ul {
+            font-size: 0.95rem;
+            color: #334155;
+            margin-top: 0.8rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.2rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #f9a826;
+            font-weight: 700;
+        }
+
+        .highlight-link {
+            color: #0b5d8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .highlight-link:hover {
+            border-bottom: 1px solid #f9a826;
+            color: #0a4b74;
+        }
+
+        .accent-box {
+            background: #f0f4fe;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0 1.5rem;
+            border-left: 6px solid #f9a826;
+        }
+
+        .accent-box p {
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-mini {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 2rem 1.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin: 2rem 0 1rem;
+        }
+
+        .faq-mini h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #0b1a2f;
+        }
+
+        .faq-mini details {
+            margin: 1rem 0 0.4rem;
+            border-bottom: 1px solid #e3e9f0;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1e3a5f;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini summary::marker {
+            color: #f9a826;
+        }
+
+        .faq-mini .answer {
+            margin: 0.5rem 0 0.2rem 1rem;
+            color: #3a4a62;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #1e3452;
+            color: #1e3452;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            margin-top: 0.8rem;
+        }
+
+        .btn-outline:hover {
+            background: #1e3452;
+            color: #fff;
+            border-color: #1e3452;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #d5dee8;
+            font-size: 0.85rem;
+            color: #5a6b7e;
+            text-align: center;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 2.5rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .accent-box {
+                padding: 1.4rem 1.2rem;
+            }
+            .faq-mini {
+                padding: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图：稳定入口认知 -->
+    <section class="hero">
+        <h1>足球竞彩 · 数据视野</h1>
+        <p class="sub">从赛前信息到赛果参考，为理性爱好者提供结构化的赛事数据入口</p>
+        <span class="badge">⚽ 知识型 · 信息卡片</span>
+    </section>
+
+    <div class="container">
+
+        <!-- 自然段落：嵌入足球竞彩链接 -->
+        <div class="intro-text">
+            <p>在信息纷杂的竞彩领域，一个稳定、清晰的数据入口至关重要。<strong><a href="https://cn-cns-footballbet.com" class="highlight-link">足球竞彩</a></strong> 正是这样一处聚合参考——它整合了主流赛事的赛前数据、近况趋势与赔率变动，帮助用户在分析时拥有更完整的背景视图。无论是初探规则的新人，还是长期关注盘面变化的爱好者，都可以将它作为日常浏览的起点。</p>
+        </div>
+
+        <!-- 信息卡片区：用途卡片 + 适合人群融合 -->
+        <div class="card-grid">
+            <div class="card">
+                <h3>📋 赛前速览</h3>
+                <p>每场比赛浓缩为关键数据卡片：主客队战绩、伤停影响、历史交锋与近期状态。告别碎片信息，一张卡片覆盖核心维度。</p>
+            </div>
+            <div class="card">
+                <h3>🧭 趋势观察</h3>
+                <p>赔率变化与市场热度并非决策依据，但能反映大众预期。足球竞彩提供清晰走势图，辅助你建立自己的分析习惯。</p>
+            </div>
+            <div class="card">
+                <h3>👥 适合人群</h3>
+                <ul>
+                    <li>数据型爱好者：喜欢从数字中寻找模式</li>
+                    <li>竞彩入门者：需要结构化的信息框架</li>
+                    <li>理性参考用户：不盲从推荐，自主判断</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>🔐 稳定入口</h3>
+                <p>页面结构轻量，加载迅速。无论是赛前几小时还是临场阶段，都能快速调出所需数据，省去反复搜索的麻烦。</p>
+            </div>
+        </div>
+
+        <!-- 强调色链接自然段落 + 场景提示 -->
+        <div class="accent-box">
+            <p><strong>⚡ 一个常见的场景：</strong>周末五大联赛密集开赛，你希望快速了解某支球队近五场得失球、主客场差异以及对手的伤病情况。与其在多个页面之间切换，不如直接访问 <a href="https://cn-cns-footballbet.com" class="highlight-link">足球竞彩</a>，在同一个界面下对照查看。数据排列克制，没有冗余广告干扰，适合作为分析流程中的固定锚点。</p>
+            <p style="margin-top: 0.8rem;">—— 它不是预测工具，而是信息基础设施。你的判断，永远来自你自己的思考。</p>
+        </div>
+
+        <!-- FAQ 摘要：知识型语气 -->
+        <div class="faq-mini">
+            <h4>❓ 常见疑问摘要</h4>
+            <details>
+                <summary>足球竞彩的数据来源可靠吗？</summary>
+                <div class="answer">平台聚合的数据主要来自公开赛事统计与主流体育数据提供商，更新频率较高。建议交叉验证关键信息，尤其是临场阵容变动。</div>
+            </details>
+            <details>
+                <summary>我需要注册或付费才能使用吗？</summary>
+                <div class="answer">不需要。核心数据页面直接开放，保持低门槛访问。部分高级筛选或历史对比功能可能需登录，但日常浏览完全免费。</div>
+            </details>
+            <details>
+                <summary>这个网站适合竞彩新手吗？</summary>
+                <div class="answer">非常适合。界面没有复杂术语轰炸，每项数据都有简明标注。新手可以先从“赛前速览”卡片入手，逐步理解各指标含义。</div>
+            </details>
+            <div style="margin-top: 1.2rem;">
+                <a href="https://cn-cns-footballbet.com" class="btn-outline">足球竞彩</a>
+            </div>
+        </div>
+
+        <!-- 尾部自然提示 -->
+        <div class="footer-note">
+            <p>保持信息简洁，尊重独立思考。数据是地图，决策者是您自己。</p>
+            <p style="margin-top: 0.3rem;">页面内容仅作信息展示，不构成任何投注建议。</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
